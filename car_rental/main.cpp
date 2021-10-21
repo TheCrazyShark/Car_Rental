@@ -1,5 +1,34 @@
 #include <iostream>
+#include <string>
+using namespace std;
+
+void main_menu() {
+	string username, password;
+	int user_input;
+
+	cout << "Welcome to the car rental service! Enter 1 if you already have an account, otherwise enter 2 to create an account.";
+
+	do {
+		cin >> user_input;
+		if (user_input == 1) {
+			cout << "Please enter your username";
+			cin >> username;
+			cout << "Please enter your password";
+			cin >> password;
+
+			login();
+		}
+		else if (user_input == 2) {
+			create_account();
+		}
+		else {
+			cout << "Invalid input, please try again.";
+		}
+	} while (user_input != 1 || user_input != 2);
+}
 
 int main() {
+	main_menu();
 
+	return 0;
 }
