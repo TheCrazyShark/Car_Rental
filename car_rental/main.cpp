@@ -7,7 +7,7 @@ void main_menu() {
 	int user_input;
 
 	cout << "Welcome to the car rental service! Enter 1 if you already have an account, otherwise enter 2 to create an account.";
-
+//login: add 3 iterations and then end program
 	do {
 		cin >> user_input;
 		if (user_input == 1) {
