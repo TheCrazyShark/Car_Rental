@@ -27,6 +27,14 @@ void main_menu() {
 	} while (user_input != 1 || user_input != 2);
 }
 
+void login(){
+	
+}
+
+void create_account() {
+
+}
+
 int main() {
 	main_menu();
 
