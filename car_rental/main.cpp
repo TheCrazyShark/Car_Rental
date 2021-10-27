@@ -2,6 +2,42 @@
 #include <string>
 using namespace std;
 
+/*----------------
+Might be worthwhile to create an object to merge the login() and create_account() functions since their initial layout is similar
+------------------*/
+void login() {
+	//login: add 3 iterations and then end program
+	string username, password;
+
+	cout << "Please enter your username:" << endl;
+	cin >> username;
+	cout << "Please enter your password:" << endl;
+	cin >> password;
+
+	/*----------------
+	1. Hash the password that was just entered
+	2. Select the password (Should be hashed) from the database by matching the usernames
+	3. Test the newly hashed password against the pulled password and test if they are the same
+		ERROR: Provide same error message no matter if account isn't found or password doesn't match "Account not found or password is incorrect"
+	------------------*/
+}
+
+void create_account() {
+	string username, password_first, password_second;
+	
+	cout << "Create your username." << endl;
+	cin >> username;
+	do { // Repeat if the two passwords do not match ------ Will probably change this in order to clear up wording
+		cout << "Create your password." << endl;
+		cin >> password_first;
+		cout << "Please re-enter your password." << endl;
+		cin >> password_second;
+		if (password_first != password_second) {
+			cout << "Passwords do not match, please re-enter.";
+		}
+	} while (password_first != password_second);
+}
+
 void main_menu() {
 	int user_input;
 
@@ -21,20 +57,6 @@ void main_menu() {
 			cout << "Invalid input, please try again.";
 		}
 	} while (user_input != 1 || user_input != 2);
-}
-
-void login() {
-	//login: add 3 iterations and then end program
-	string username, password;
-
-	cout << "Please enter your username";
-	cin >> username;
-	cout << "Please enter your password";
-	cin >> password;
-}
-
-void create_account() {
-
 }
 
 int main() {
