@@ -1,25 +1,52 @@
-#include <iostream>
-#include <string>
-using namespace std;
+#include "global.h"
 
 /*----------------
 Might be worthwhile to create an object to merge the login() and create_account() functions since their initial layout is similar
-------------------*/
+----------------*/
 void login() {
 	//login: add 3 iterations and then end program
-	string username, password;
+	string username, password, user_id;
+	vector<string>usernames;
+	vector<string>passwords;
+	vector<string>user_ids;
 
 	cout << "Please enter your username:" << endl;
 	cin >> username;
 	cout << "Please enter your password:" << endl;
 	cin >> password;
 
+	int i = 0;
+
+	ifstream users("users.txt"); //opening the file.
+	if (users.is_open()) //if the file is open
+	{
+		//ignore first line
+		string line;
+		getline(users, line);
+
+		while (!users.eof()) //while the end of file is NOT reached
+		{
+			//I have 3 sets {user_id, username, password} so use 3 getlines
+			getline(users, user_id, ',');
+			user_ids.push_back(user_id);
+			getline(users, username, ',');
+			usernames.push_back(username);
+			getline(users, password, '\n'); //new line after password
+			passwords.push_back(password);
+
+			i += 1; //increment number of lines
+		}
+		users.close(); //closing the file
+		cout << "Number of entries: " << i - 1 << endl;
+	}
+	else cout << "Unable to open file"; //if the file is not open output
+
 	/*----------------
 	1. Hash the password that was just entered
 	2. Select the password (Should be hashed) from the database by matching the usernames
 	3. Test the newly hashed password against the pulled password and test if they are the same
 		ERROR: Provide same error message no matter if account isn't found or password doesn't match "Account not found or password is incorrect"
-	------------------*/
+	----------------*/
 }
 
 void create_account() {
@@ -36,6 +63,8 @@ void create_account() {
 			cout << "Passwords do not match, please re-enter.";
 		}
 	} while (password_first != password_second);
+
+
 }
 
 void main_menu() {
