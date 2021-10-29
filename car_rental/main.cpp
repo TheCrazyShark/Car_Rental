@@ -88,7 +88,24 @@ void main_menu() {
 	} while (user_input != 1 || user_input != 2);
 }
 
+/******************
+	Request car will be called if the user wants to request a car.
+	It will ask what kind of car they want long with some other info and then pass the info on to the admin.
+	Im thinking pass the user input into a text file that the admin can access then delete.
+	Error statement if car type not available.
+******************/
 void request_car(){
+	string firstName, lastName, address, carType, rentalUse;
+	
+	cout << "Enter first name: " << "\n";
+	cin >> firstName;
+	cout << "Enter last name: " << "\n";
+	cin >> lastName;
+	cout << "Enter you address: " << "\n";
+	cin >> address;
+	cout << "Enter preferred rental type(Car, Truck, Suv, Van): " << "\n";
+	cin >> carType;
+	cout << "Enter why you want to rent: " << "\n";
 
 }
 
