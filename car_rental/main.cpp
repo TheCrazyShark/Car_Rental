@@ -106,7 +106,7 @@ void request_car(){
 	cout << "Enter preferred rental type(Car, Truck, Suv, Van): " << "\n";
 	cin >> carType;
 	cout << "Enter why you want to rent: " << "\n";
-
+	//need to figure out how to store the request
 }
 
 int main() {
