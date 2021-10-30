@@ -15,31 +15,44 @@ void login() {
 	cout << "Please enter your password:" << endl;
 	cin >> password;
 
-	int i = 0;
-
-	ifstream users("users.txt"); //opening the file.
-	if (users.is_open()) //if the file is open
-	{
-		//ignore first line
+	int i = 0; // Counter for file
+	ifstream users("users.txt"); // Opening the file.
+	if (users.is_open()) { // If the file is open
+		// Ignore first line for column names
 		string line;
 		getline(users, line);
 
-		while (!users.eof()) //while the end of file is NOT reached
-		{
-			//I have 3 sets {user_id, username, password} so use 3 getlines
+		while (!users.eof()) { // While the end of file is NOT reached
 			getline(users, user_id, ',');
-			user_ids.push_back(user_id);
+			user_ids.push_back(user_id); // NEEDS TO BE INT
 			getline(users, username, ',');
 			usernames.push_back(username);
-			getline(users, password, '\n'); //new line after password
+			getline(users, password, '\n'); // New line after password
 			passwords.push_back(password);
 
-			i += 1; //increment number of lines
+			i += 1; // Increment number of lines
 		}
 		users.close(); //closing the file
-		cout << "Number of entries: " << i - 1 << endl;
 	}
 	else cout << "Unable to open file"; //if the file is not open output
+
+	// Check if username entered matches with any username and if so returns their user_id
+	vector<string>::iterator it;
+	it = find(usernames.begin(), usernames.end(), username);
+	int userIndex;
+
+	if (it != usernames.end()) { // If it doesn't make to end then username is in vector
+		userIndex = distance(usernames.begin(), it) - 1; // Find distance in order to calculate user_id
+		cout << "Username found. User id is: " << userIndex << endl;
+	}
+	else
+		cout << "Username not found" << endl;
+
+	if (password == passwords[userIndex]) {
+		cout << "Login successful" << endl;
+	}
+	else
+		cout << "Password did not match" << endl;
 
 	/*----------------
 	1. Hash the password that was just entered
@@ -63,8 +76,6 @@ void create_account() {
 			cout << "Passwords do not match, please re-enter.";
 		}
 	} while (password_first != password_second);
-
-
 }
 
 void main_menu() {
@@ -86,6 +97,27 @@ void main_menu() {
 			cout << "Invalid input, please try again.";
 		}
 	} while (user_input != 1 || user_input != 2);
+}
+
+/******************
+	Request car will be called if the user wants to request a car.
+	It will ask what kind of car they want long with some other info and then pass the info on to the admin.
+	Im thinking pass the user input into a text file that the admin can access then delete.
+	Error statement if car type not available.
+******************/
+void request_car() {
+	string firstName, lastName, address, carType, rentalUse;
+
+	cout << "Enter first name: " << "\n";
+	cin >> firstName;
+	cout << "Enter last name: " << "\n";
+	cin >> lastName;
+	cout << "Enter you address: " << "\n";
+	cin >> address;
+	cout << "Enter preferred rental type(Car, Truck, Suv, Van): " << "\n";
+	cin >> carType;
+	cout << "Enter why you want to rent: " << "\n";
+	//need to figure out how to store the request
 }
 
 int main() {

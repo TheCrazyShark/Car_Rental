@@ -1,2 +1,4 @@
 user_id, username, password
-1, testuser, fakepassword
+1, testuser, fakepass
+2, testadmin, fakepass
+3, testmech, fakepass
