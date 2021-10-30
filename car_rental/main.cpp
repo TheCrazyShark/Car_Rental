@@ -108,7 +108,7 @@ void main_menu() {
 ******************/
 void request_car() {
 	string firstName, lastName, address, carType, rentalUse;
-
+	//
 	cout << "Enter first name: " << "\n";
 	cin >> firstName;
 	cout << "Enter last name: " << "\n";
@@ -119,6 +119,24 @@ void request_car() {
 	cin >> carType;
 	cout << "Enter why you want to rent: " << "\n";
 	//need to figure out how to store the request
+}
+
+/******************
+	Return car will be called when a user wants to return a car.
+	The user will fill out the return form.
+	The form will then be viewable by the admin.
+	Admin will either decide to issue a repair ticket or return the car to the database.
+******************/
+void return_car() {
+	string damages, dateReturned;
+	int milesDriven;
+
+	cout << "Are there any damages: " << "\n";
+	cin >> damages;
+	cout << "When did you return the car: " << "\n";
+	cin >> dateReturned;
+	cout << "How many miles have you driven:  " << "\n";
+	cin >> milesDriven;
 }
 
 int main() {
