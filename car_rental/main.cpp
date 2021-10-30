@@ -101,6 +101,7 @@ void main_menu() {
 
 /******************
 	Request car will be called if the user wants to request a car.
+	The user can request to view the available cars. Which will be printed into the console.
 	It will ask what kind of car they want long with some other info and then pass the info on to the admin.
 	Im thinking pass the user input into a text file that the admin can access then delete.
 	Error statement if car type not available.
