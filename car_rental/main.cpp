@@ -15,12 +15,13 @@ void login() {
 	cout << "Please enter your password:" << endl;
 	cin >> password;
 
-	int i = 0; // Counter for file
 	ifstream users("users.txt"); // Opening the file.
 	if (users.is_open()) { // If the file is open
 		// Ignore first line for column names
 		string line;
 		getline(users, line);
+
+		//int i = 0; // Counter for file
 
 		while (!users.eof()) { // While the end of file is NOT reached
 			getline(users, user_id, ',');
@@ -30,11 +31,11 @@ void login() {
 			getline(users, password, '\n'); // New line after password
 			passwords.push_back(password);
 
-			i += 1; // Increment number of lines
+			//i += 1; // Increment number of lines
 		}
 		users.close(); //closing the file
 	}
-	else cout << "Unable to open file"; //if the file is not open output
+	else cout << "Unable to open file"; // Error if file can't open
 
 	// Check if username entered matches with any username and if so returns their user_id
 	vector<string>::iterator it;
@@ -54,28 +55,61 @@ void login() {
 	else
 		cout << "Password did not match" << endl;
 
-	/*----------------
+	/******************************************
 	1. Hash the password that was just entered
 	2. Select the password (Should be hashed) from the database by matching the usernames
 	3. Test the newly hashed password against the pulled password and test if they are the same
 		ERROR: Provide same error message no matter if account isn't found or password doesn't match "Account not found or password is incorrect"
-	----------------*/
+	******************************************/
 }
 
 void create_account() {
-	string username, password_first, password_second;
+	string username, password_first, password_second, user_id, inputPassword, inputUsername;
 	
-	cout << "Create your username." << endl;
+	// User input for username/password
+	cout << "Create your username: " << endl;
 	cin >> username;
 	do { // Repeat if the two passwords do not match ------ Will probably change this in order to clear up wording
-		cout << "Create your password." << endl;
+		cout << "Create your password: " << endl;
 		cin >> password_first;
-		cout << "Please re-enter your password." << endl;
+		cout << "Please re-enter your password: " << endl;
 		cin >> password_second;
 		if (password_first != password_second) {
 			cout << "Passwords do not match, please re-enter.";
 		}
 	} while (password_first != password_second);
+
+	// Counts the number of users in order to calculate the next available user_id
+	ifstream usersIn("users.txt");
+	if (usersIn.is_open()) { // If the file is open
+		// Ignore first line for column names
+		string line;
+		getline(usersIn, line);
+
+		while (!usersIn.eof()) { // While the end of file is NOT reached
+			string line;
+			getline(usersIn, user_id, ',');
+			getline(usersIn, line, '\n'); // IGNORE THIS INPUT - Only needed to get to end of line
+
+			//cout << "User ID: " << user_id << ". Username: " << inputUsername << ". Password: " << inputPassword << endl;
+
+			//getline(usersIn, line, '\n').ignore();
+		}
+		usersIn.close(); //closing the file
+	}
+	else cout << "Unable to open file"; // Error if file can't open
+
+	/********************************************
+	HASH PASSWORD BEFORE WRITING PASSWORD TO FILE
+	********************************************/
+
+	// Adds new user to users.txt
+	ofstream usersOut("users.txt", fstream::app);
+	if (usersOut.is_open()) { // If the file is open
+		usersOut << "\n" << stoi(user_id) + 1 << ", " << username << ", " << password_first; // Add whole line
+		usersOut.close(); //closing the file
+	}
+	else cout << "Unable to open file"; // Error if file can't open
 }
 
 void main_menu() {
