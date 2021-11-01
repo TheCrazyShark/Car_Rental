@@ -196,7 +196,7 @@ void repair_car() {
 void view_request() {
 
 	/******************
-
+	
 	******************/
 	void issue_or_deny(); {
 		bool accDeny;
