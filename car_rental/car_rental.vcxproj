@@ -142,9 +142,13 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bcrypt.h" />
     <ClInclude Include="global.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="cars.txt" />
+    <Text Include="log.txt" />
+    <Text Include="requests.txt" />
     <Text Include="users.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

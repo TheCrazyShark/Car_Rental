@@ -23,8 +23,14 @@
     <ClInclude Include="global.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bcrypt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="users.txt" />
+    <Text Include="cars.txt" />
+    <Text Include="log.txt" />
+    <Text Include="requests.txt" />
   </ItemGroup>
 </Project>

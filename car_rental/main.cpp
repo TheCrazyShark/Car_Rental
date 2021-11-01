@@ -1,11 +1,13 @@
 #include "global.h"
+#include "bcrypt.h"
 
 /*----------------
 	Might be worthwhile to create an object to merge the login() and create_account() functions since their initial layout is similar
 ----------------*/
 void login() {
 	//login: add 3 iterations and then end program
-	string username, password, user_id;
+	string username, password, hashed_password, user_id;
+	string Hash_function(string);
 	vector<string>usernames;
 	vector<string>passwords;
 	vector<string>user_ids;
@@ -14,6 +16,10 @@ void login() {
 	cin >> username;
 	cout << "Please enter your password:" << endl;
 	cin >> password;
+
+	//Hashing the password that was just entered.
+	hashed_password = Hash_function(password);
+	//cout << hashed_password << endl; //Debugging
 
 	ifstream users("users.txt"); // Opening the file.
 	if (users.is_open()) { // If the file is open
@@ -108,6 +114,19 @@ void create_account() {
 	else cout << "Unable to open file"; // Error if file can't open
 }
 
+/********************
+	Called by create_account() and login() to get a hash of passwords for testing.
+********************/
+string hash_function(string password) {
+	string password_1, hash;
+	password_1 = password;
+	//Will Add GenerateHash and GenerateSALT by the next phase.
+	hash = bcrypt::GenerateHash(password_1);
+	//cout << "Hash: " << Hash << endl; // DEBUGGING
+
+	return hash;
+}
+
 void main_menu() {
 	int user_input;
 
@@ -195,7 +214,10 @@ void repair_car() {
 	and allows the admin to accept or deny the request
 ******************/
 bool issue_or_deny() {
+	bool decision;
+	decision = false;
 
+	return decision;
 }
 
 /*****************
