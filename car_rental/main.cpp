@@ -193,6 +193,13 @@ void repair_car() {
 	cin >> carColor;
 }
 
+/******************
+
+******************/
+void issue_or_deny() {
+
+}
+
 int main() {
 	main_menu();
 
