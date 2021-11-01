@@ -90,10 +90,6 @@ void create_account() {
 			string line;
 			getline(usersIn, user_id, ',');
 			getline(usersIn, line, '\n'); // IGNORE THIS INPUT - Only needed to get to end of line
-
-			//cout << "User ID: " << user_id << ". Username: " << inputUsername << ". Password: " << inputPassword << endl;
-
-			//getline(usersIn, line, '\n').ignore();
 		}
 		usersIn.close(); //closing the file
 	}
@@ -123,6 +119,7 @@ void main_menu() {
 		cin >> user_input;
 		if (user_input == 1) { // Login
 			login();
+			// IF LOGIN SUCCSESSFUL PULL TYPE
 		}
 		else if (user_input == 2) { // Create account
 			create_account();
@@ -188,6 +185,21 @@ void repair_car() {
 	cin >> carType;
 	cout << "What is the car's color:  " << "\n";
 	cin >> carColor;
+}
+
+/******************
+******************/
+void issue_or_deny() {
+
+}
+
+/******************
+	Log is called after every "action" that is made. The function recieves
+	the user_id that made the action as well as what the action was. It will then
+	push to a file that holds that information as well as the date/time that it occured
+******************/
+void log(string user_id, string action_type) {
+	string date, time; // GET CURRENT DATE
 }
 
 int main() {
