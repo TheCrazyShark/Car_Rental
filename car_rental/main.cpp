@@ -1,7 +1,7 @@
 #include "global.h"
 
 /*----------------
-Might be worthwhile to create an object to merge the login() and create_account() functions since their initial layout is similar
+	Might be worthwhile to create an object to merge the login() and create_account() functions since their initial layout is similar
 ----------------*/
 void login() {
 	//login: add 3 iterations and then end program
@@ -138,7 +138,7 @@ void main_menu() {
 	Error statement if car type not available.
 ******************/
 void request_car() {
-	string firstName, lastName, address, carType, rentalUse;
+	string firstName, lastName, address, carType, rentalUse, rentalTime;
 	//
 	cout << "Enter first name: " << "\n";
 	cin >> firstName;
@@ -191,8 +191,18 @@ void repair_car() {
 }
 
 /******************
+	Called by view_requests after an admin selects a specific request
+	and allows the admin to accept or deny the request
 ******************/
 void issue_or_deny() {
+
+}
+
+/*****************
+	Outputs all requests and lets an admin select 
+	and view the specific information of a request.
+*****************/
+void view_requests() {
 
 }
 
