@@ -173,6 +173,23 @@ void return_car() {
 	cin >> milesDriven;
 }
 
+/******************
+	After the car is returned this fuction is called if the car needs repaired.
+	The admin will fill out a form of the cars information and will attach the damages or
+	suspected problems that the customer decribed.
+******************/
+void repair_car() {
+	string carType, carPlate, carColor, damages;
+	cout << "What were the damages or problems: " << "\n";
+	cin >> damages;
+	cout << "What is the car's plate number: " << "\n";
+	cin >> carPlate;
+	cout << "What tpye of car is it: " << "\n";
+	cin >> carType;
+	cout << "What is the car's color:  " << "\n";
+	cin >> carColor;
+}
+
 int main() {
 	main_menu();
 
