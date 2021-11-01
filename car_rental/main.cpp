@@ -194,14 +194,8 @@ void repair_car() {
 	Called by view_requests after an admin selects a specific request
 	and allows the admin to accept or deny the request
 ******************/
-void view_request() {
+bool issue_or_deny() {
 
-	/******************
-	
-	******************/
-	void issue_or_deny(); {
-		bool accDeny;
-	}
 }
 
 /*****************
