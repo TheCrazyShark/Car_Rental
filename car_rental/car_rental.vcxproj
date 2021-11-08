@@ -140,6 +140,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menus.cpp">
+      <DeploymentContent>false</DeploymentContent>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bcrypt.h" />

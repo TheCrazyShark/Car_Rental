@@ -9,8 +9,7 @@
 #include<string>
 
 using namespace std;
-namespace bcrypt
-{
+namespace bcrypt {
     string GenerateHash(string& password, unsigned rounds=12);
 }
 

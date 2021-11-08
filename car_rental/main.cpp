@@ -1,16 +1,19 @@
 #include "global.h"
-#include "bcrypt.h"
+//#include "bcrypt.h"
 
 /*----------------
 	Might be worthwhile to create an object to merge the login() and create_account() functions since their initial layout is similar
+
+	!!!!NEED TO ADD MAX 3 TIMES LOGIN!!!!!
 ----------------*/
 void login() {
-	//login: add 3 iterations and then end program
+	// 
 	string username, password, hashed_password, user_id;
 	string Hash_function(string);
 	vector<string>usernames;
 	vector<string>passwords;
 	vector<string>user_ids;
+	int loginCount = 0;
 
 	cout << "Please enter your username:" << endl;
 	cin >> username;
@@ -18,7 +21,7 @@ void login() {
 	cin >> password;
 
 	//Hashing the password that was just entered.
-	hashed_password = Hash_function(password);
+	//hashed_password = Hash_function(password);
 	//cout << hashed_password << endl; //Debugging
 
 	ifstream users("users.txt"); // Opening the file.
@@ -117,7 +120,7 @@ void create_account() {
 /********************
 	Called by create_account() and login() to get a hash of passwords for testing.
 ********************/
-string hash_function(string password) {
+/*string hash_function(string password) {
 	string password_1, hash;
 	password_1 = password;
 	//Will Add GenerateHash and GenerateSALT by the next phase.
@@ -125,29 +128,7 @@ string hash_function(string password) {
 	//cout << "Hash: " << Hash << endl; // DEBUGGING
 
 	return hash;
-}
-
-void main_menu() {
-	int user_input;
-
-	cout << "Welcome to the car rental service! Enter 1 if you already have an account, otherwise enter 2 to create an account." << endl;
-	cout << "1 - Login" << endl;
-	cout << "2 - Create Account" << endl;
-
-	do {
-		cin >> user_input;
-		if (user_input == 1) { // Login
-			login();
-			// IF LOGIN SUCCSESSFUL PULL TYPE
-		}
-		else if (user_input == 2) { // Create account
-			create_account();
-		}
-		else {
-			cout << "Invalid input, please try again.";
-		}
-	} while (user_input != 1 || user_input != 2);
-}
+}*/
 
 /******************
 	Request car will be called if the user wants to request a car.
