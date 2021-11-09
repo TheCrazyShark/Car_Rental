@@ -16,3 +16,6 @@ void repair_car();
 bool issue_or_deny();
 void view_requests();
 void log(string user_id, string action_type);
+void admin_menu();
+void customer_menu();
+void mech_menu();
