@@ -153,6 +153,14 @@ void request_car() {
 	cout << "How long are you expecting to rent: " << "\n";
 	cin >> rentalTime;
 	//need to figure out how to store the request
+
+	ofstream usersOut("users.txt", fstream::app);
+	if (usersOut.is_open()) { // If the file is open
+		usersOut << "\n" << firstName << ", " << lastName << ", " << address << ", " << carType << ", " << rentalUse
+			<< ", " << rentalTime; // Add whole line
+		usersOut.close(); //closing the file
+	}
+	else cout << "Unable to open file"; // Error if file can't open
 }
 
 /******************
