@@ -140,21 +140,21 @@ void create_account() {
 void request_car() {
 	string firstName, lastName, address, carType, rentalUse, rentalTime;
 	//
-	cout << "Enter first name: " << "\n";
-	cin >> firstName;
-	cout << "Enter last name: " << "\n";
-	cin >> lastName;
-	cout << "Enter you address: " << "\n";
-	cin >> address;
-	cout << "Enter preferred rental type(Car, Truck, Suv, Van): " << "\n";
-	cin >> carType;
-	cout << "Enter why you want to rent: " << "\n";
-	cin >> rentalUse;
-	cout << "How long are you expecting to rent: " << "\n";
-	cin >> rentalTime;
+	cout << "Enter first name: ";
+	getline(cin, firstName);
+	cout << "Enter last name: ";
+	getline(cin, lastName);
+	cout << "Enter you address: ";
+	getline(cin, address);
+	cout << "Enter preferred rental type(Car, Truck, Suv, Van): ";
+	getline(cin, carType);
+	cout << "Enter why you want to rent: ";
+	getline(cin, rentalUse);
+	cout << "How long are you expecting to rent: ";
+	getline(cin, rentalTime);
 	//need to figure out how to store the request
 
-	ofstream usersOut("users.txt", fstream::app);
+	ofstream usersOut("requests.txt", fstream::app);
 	if (usersOut.is_open()) { // If the file is open
 		usersOut << "\n" << firstName << ", " << lastName << ", " << address << ", " << carType << ", " << rentalUse
 			<< ", " << rentalTime; // Add whole line
@@ -227,7 +227,7 @@ void log(string user_id, string action_type) {
 }
 
 int main() {
-	main_menu();
-
+	//main_menu();
+	request_car();
 	return 0;
 }

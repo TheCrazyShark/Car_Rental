@@ -1,1 +1,2 @@
 firstName, lastName, address, carType, rentalUse
+Chad, Green, YourMoms House, Truck, Current Car in Shop, 2 days

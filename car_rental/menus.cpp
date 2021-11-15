@@ -78,7 +78,7 @@ void main_menu() {
 	do {
 		cin >> user_input;
 		if (user_input == "1") { // Login
-			user = login();
+			//user = login();
 			// IF LOGIN SUCCSESSFUL PULL TYPE
 		}
 		else if (user_input == "2") { // Create account
