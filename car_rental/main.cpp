@@ -176,10 +176,10 @@ void return_car() {
 	getline(cin,damage);
 	if (damage == "yes") {
 		cout << "What are the damages: ";
-		getline(cin, damages);;
+		getline(cin, damages);
 	}
 	else {
-		damages = "none"
+		damages = "none";
 	}
 	cout << "When did you return the car: ";
 	getline(cin, dateReturned);;

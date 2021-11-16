@@ -149,6 +149,7 @@
     <ClInclude Include="global.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\returns.txt" />
     <Text Include="cars.txt" />
     <Text Include="log.txt" />
     <Text Include="requests.txt" />
