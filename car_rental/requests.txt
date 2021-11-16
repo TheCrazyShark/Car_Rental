@@ -1,2 +1,4 @@
 firstName, lastName, address, carType, rentalUse
 Chad, Green, YourMoms House, Truck, Current Car in Shop, 2 days
+Shane, Smith, SRU, Car, Car Totalled, 1 week
+John, Friend, Student Center, SUV, Need Car, 1 month

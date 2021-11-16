@@ -227,7 +227,18 @@ bool issue_or_deny() {
 	and view the specific information of a request.
 *****************/
 void view_requests() {
+	ifstream requestsIn("requests.txt");
+	if (requestsIn.is_open()) { // If the file is open
+		string line;
+		cout << endl;
 
+		//will show column names for reference
+		while (getline(requestsIn, line)) { // While the end of file is NOT reached
+			cout << line << endl;
+		}
+		requestsIn.close(); //closing the file
+	}
+	else cout << "Unable to open file"; // Error if file can't open
 }
 
 /******************
@@ -241,7 +252,9 @@ void log(string user_id, string action_type) {
 
 int main() {
 	//main_menu();
-	//request_car();
-	return_car();
+	request_car();
+	//return_car();
+	view_requests();
+
 	return 0;
 }
