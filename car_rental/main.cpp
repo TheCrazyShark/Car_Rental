@@ -170,15 +170,28 @@ void request_car() {
 	Admin will either decide to issue a repair ticket or return the car to the database.
 ******************/
 void return_car() {
-	string damages, dateReturned;
-	int milesDriven;
+	string damage, damages, dateReturned, milesDriven;
 
-	cout << "Are there any damages: " << "\n";
-	cin >> damages;
-	cout << "When did you return the car: " << "\n";
-	cin >> dateReturned;
-	cout << "How many miles have you driven:  " << "\n";
-	cin >> milesDriven;
+	cout << "Are there any damages (yes/no): ";
+	getline(cin,damage);
+	if (damage == "yes") {
+		cout << "What are the damages: ";
+		getline(cin, damages);;
+	}
+	else {
+		damages = "none"
+	}
+	cout << "When did you return the car: ";
+	getline(cin, dateReturned);;
+	cout << "How many miles have you driven:  ";
+	getline(cin, milesDriven);;
+
+	ofstream usersOut("returns.txt", fstream::app);
+	if (usersOut.is_open()) { // If the file is open
+		usersOut << "\n" << damage << ", " << damages << ", " << dateReturned << ", " << milesDriven; // Add whole line
+		usersOut.close(); //closing the file
+	}
+	else cout << "Unable to open file"; // Error if file can't open
 }
 
 /******************
@@ -228,6 +241,7 @@ void log(string user_id, string action_type) {
 
 int main() {
 	//main_menu();
-	request_car();
+	//request_car();
+	return_car();
 	return 0;
 }
