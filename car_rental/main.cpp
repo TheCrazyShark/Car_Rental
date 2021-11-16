@@ -154,11 +154,11 @@ void request_car() {
 	getline(cin, rentalTime);
 	//need to figure out how to store the request
 
-	ofstream usersOut("requests.txt", fstream::app);
-	if (usersOut.is_open()) { // If the file is open
-		usersOut << "\n" << firstName << ", " << lastName << ", " << address << ", " << carType << ", " << rentalUse
+	ofstream requestsOut("requests.txt", fstream::app);
+	if (requestsOut.is_open()) { // If the file is open
+		requestsOut << "\n" << firstName << ", " << lastName << ", " << address << ", " << carType << ", " << rentalUse
 			<< ", " << rentalTime; // Add whole line
-		usersOut.close(); //closing the file
+		requestsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
 }
@@ -186,10 +186,10 @@ void return_car() {
 	cout << "How many miles have you driven:  ";
 	getline(cin, milesDriven);;
 
-	ofstream usersOut("returns.txt", fstream::app);
-	if (usersOut.is_open()) { // If the file is open
-		usersOut << "\n" << damage << ", " << damages << ", " << dateReturned << ", " << milesDriven; // Add whole line
-		usersOut.close(); //closing the file
+	ofstream returnsOut("returns.txt", fstream::app);
+	if (returnsOut.is_open()) { // If the file is open
+		returnsOut << "\n" << damage << ", " << damages << ", " << dateReturned << ", " << milesDriven; // Add whole line
+		returnsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
 }
