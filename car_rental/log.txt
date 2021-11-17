@@ -1,1 +1,1 @@
-user_id, action_type, date, time
+user_id,action_type,date,time

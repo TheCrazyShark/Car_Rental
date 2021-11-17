@@ -1,7 +1,7 @@
 
-yes, Broken Windshield, 11/11, 1000
-yes, damages, returnDate, milesDriven
-yes, broken windshield, 11/11, 1000
-yes, broken windshield, 11/11, 1000
-no, none, 11/11, 1000
-no, none, 25th, 100
+yes,BrokenWindshield,11/11,1000
+yes,damages,returnDate,milesDriven
+yes,brokenwindshield,11/11,1000
+yes,brokenwindshield,11/11,1000
+no,none,11/11,1000
+no,none,25th,100

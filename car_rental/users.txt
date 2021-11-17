@@ -1,4 +1,4 @@
-user_id, username, password, userType
-1, testuser, fakepass, customer
-2, testadmin, fakepass, admin
-3, testmech, fakepass, mechanic
+user_id,username,password,userType
+1,testuser,fakepass,customer
+2,testadmin,fakepass,admin
+3,testmech,fakepass,mechanic

@@ -12,6 +12,7 @@ void login(User& user) {
 	vector<string>usernames;
 	vector<string>passwords;
 	vector<string>user_ids;
+	vector<string>user_types;
 	int loginCount = 0;
 
 	cout << "Please enter your username:" << endl;
@@ -30,8 +31,10 @@ void login(User& user) {
 			user_ids.push_back(user_id); // NEEDS TO BE INT
 			getline(users, username, ',');
 			usernames.push_back(username);
-			getline(users, hash_pass, '\n'); // New line after password
+			getline(users, hash_pass, ','); // New line after password
 			passwords.push_back(hash_pass);
+			getline(users, user_type, '\n'); // New line after password
+			user_types.push_back(user_type);
 		}
 		users.close(); //closing the file
 	}
@@ -54,6 +57,7 @@ void login(User& user) {
 	//hash_pass = Hash_function(clear_pass);
 	//cout << hash_pass << endl; //Debugging
 
+	cout << passwords[userIndex];
 	// Test if hashed password is the equal to the password retreived from file
 	if (clear_pass == passwords[userIndex]) {
 		cout << "Login successful" << endl;

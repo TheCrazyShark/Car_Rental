@@ -1,1 +1,1 @@
-car_type, car_plate, car_color, damages
+car_type,car_plate,car_color,damages

@@ -58,7 +58,7 @@ void return_car() {
 
 	ofstream returnsOut("returns.txt", fstream::app);
 	if (returnsOut.is_open()) { // If the file is open
-		returnsOut << "\n" << damage << ", " << damages << ", " << dateReturned << ", " << milesDriven; // Add whole line
+		returnsOut << "\n" << damage << "," << damages << "," << dateReturned << "," << milesDriven; // Add whole line
 		returnsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
