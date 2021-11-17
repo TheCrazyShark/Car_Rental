@@ -76,7 +76,6 @@ void login(User& user) {
 
 	if (it != usernames.end()) { // If it doesn't make to end then username is in vector
 		userIndex = it - usernames.begin();// finds user_id
-		cout << "Username found: " << username << ". User id is : " << userIndex+1 << "." << endl;
 	}
 	else {
 		cout << "ERROR: Username not found." << endl;
@@ -87,7 +86,7 @@ void login(User& user) {
 
 	// Test if hashed password is the equal to the password retreived from file
 	if (hash_pass == passwords[userIndex]) {
-		cout << "Login successful" << endl;
+		cout << endl << "Login successful" << endl;
 	}
 	else {
 		cout << "ERROR: Password did not match." << endl;

@@ -39,6 +39,7 @@ void admin_menu(User& user) {
 	cout << "Welcome. Please select what you would like to do!" << endl;
 	cout << "1 - View Requests" << endl;
 	cout << "2 - View Car Return Submission" << endl;
+	cout << "3 - Exit" << endl;
 
 	do {
 		cin >> user_input;
@@ -47,6 +48,9 @@ void admin_menu(User& user) {
 		}
 		else if (user_input == "2") { // View Car Return Submission
 			// List car return subimssions
+		}
+		else if (user_input == "3") { // Exits from program
+			exit(0);
 		}
 		else {
 			cout << "Invalid input, please try again." << endl;
@@ -74,7 +78,7 @@ void customer_menu(User& user) {
 		else if (user_input == "2") { // Return Car
 			return_car();
 		}
-		else if (user_input == "3") {
+		else if (user_input == "3") { // Exits from program
 			exit(0);
 		}
 		else {
@@ -95,11 +99,15 @@ void mech_menu(User& user) {
 
 	cout << "Welcome. Please select what you would like to do!" << endl;
 	cout << "1 - View Repair Reports" << endl;
+	cout << "2 - Exit" << endl;
 
 	do {
 		cin >> user_input;
 		if (user_input == "1") { // View Repair Reports
 			// List repair reports
+		}
+		else if (user_input == "2") { // Exits from program
+			exit(0);
 		}
 		else {
 			cout << "Invalid input, please try again." << endl;
@@ -114,13 +122,12 @@ void main_menu() {
 	cout << "Welcome to the car rental service! Enter 1 if you already have an account, otherwise enter 2 to create an account." << endl;
 	cout << "1 - Login" << endl;
 	cout << "2 - Create Account" << endl;
+	cout << "3 - Exit" << endl;
 
 	do {
 		cin >> user_input;
 		if (user_input == "1") { // Login
 			login(user);
-
-			cout << user.getUserType() << endl;
 
 			// Give menu based on user level
 			if (user.getUserType() == "customer") {
@@ -132,11 +139,13 @@ void main_menu() {
 			else if (user.getUserType() == "mechanic") {
 				mech_menu(user);
 			}
-			// IF LOGIN SUCCSESSFUL PULL TYPE
 		}
 		else if (user_input == "2") { // Create account
 			create_account(user);
 			customer_menu(user);
+		}
+		else if (user_input == "3") { // Exits from program
+			exit(0);
 		}
 		else {
 			cout << "Invalid input, please try again." << endl;
