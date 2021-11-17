@@ -24,7 +24,7 @@ void request_car() {
 	getline(cin, rentalTime);
 	//need to figure out how to store the request
 
-	ifstream requestsIn("users.txt");
+	ifstream requestsIn("requests.txt");
 	if (requestsIn.is_open()) { // If the file is open
 		// Ignore first line for column names
 		string line;
@@ -136,8 +136,8 @@ void log(string user_id, string action_type) {
 }
 
 int main() {
-	//main_menu();
-	request_car();
+	main_menu();
+	//request_car();
 	//return_car();
 	//view_requests();
 
