@@ -1,13 +1,10 @@
 #include "global.h"
-//#include "bcrypt.h"
 
 /*----------------
-	Might be worthwhile to create an object to merge the login() and create_account() functions since their initial layout is similar
-
 	!!!!NEED TO ADD MAX 3 TIMES LOGIN!!!!!
 ----------------*/
 void login(User& user) {
-	string username, clear_pass, hash_pass, user_id, user_type;
+	string username, clear_pass, hash_pass, user_id, user_type, text;
 	string Hash_function(string);
 	vector<string>usernames;
 	vector<string>passwords;
@@ -27,14 +24,14 @@ void login(User& user) {
 		getline(users, line);
 
 		while (!users.eof()) { // While the end of file is NOT reached
-			getline(users, user_id, ',');
-			user_ids.push_back(user_id); // NEEDS TO BE INT
-			getline(users, username, ',');
-			usernames.push_back(username);
-			getline(users, hash_pass, ','); // New line after password
-			passwords.push_back(hash_pass);
-			getline(users, user_type, '\n'); // New line after password
-			user_types.push_back(user_type);
+			getline(users, text, ',');
+			user_ids.push_back(text);
+			getline(users, text, ',');
+			usernames.push_back(text);
+			getline(users, text, ',');
+			passwords.push_back(text);
+			getline(users, text, '\n'); // New line after password
+			user_types.push_back(text);
 		}
 		users.close(); //closing the file
 	}
@@ -46,8 +43,8 @@ void login(User& user) {
 	int userIndex;
 
 	if (it != usernames.end()) { // If it doesn't make to end then username is in vector
-		userIndex = distance(usernames.begin(), it) - 1; // Find distance in order to calculate user_id
-		cout << "Username found. User id is: " << userIndex << endl;
+		userIndex = it - usernames.begin();// finds user_id
+		cout << "Username found: " << username << ". User id is : " << userIndex+1 << "." << endl;
 	}
 	else {
 		cout << "ERROR: Username not found." << endl;
@@ -57,7 +54,6 @@ void login(User& user) {
 	//hash_pass = Hash_function(clear_pass);
 	//cout << hash_pass << endl; //Debugging
 
-	cout << passwords[userIndex];
 	// Test if hashed password is the equal to the password retreived from file
 	if (clear_pass == passwords[userIndex]) {
 		cout << "Login successful" << endl;
@@ -69,7 +65,7 @@ void login(User& user) {
 	// Set up user object
 	user.setUserId(user_id);
 	user.setUsername(username);
-	user.setUserType(user_type);
+	user.setUserType(user_types[userIndex]);
 
 	/******************************************
 	1. Hash the password that was just entered
@@ -116,7 +112,7 @@ void create_account(User& user) {
 	********************************************/
 
 	// Set up user object
-	user.setUserId(user_id);
+	user.setUserId(to_string(stoi(user_id) + 1));
 	user.setUsername(username);
 	user.setUserType("customer");
 

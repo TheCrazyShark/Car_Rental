@@ -111,6 +111,8 @@ void main_menu() {
 		if (user_input == "1") { // Login
 			login(user);
 
+			cout << user.getUserType() << endl;
+
 			// Give menu based on user level
 			if (user.getUserType() == "customer") {
 				customer_menu(user);

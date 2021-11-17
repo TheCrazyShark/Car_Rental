@@ -1,5 +1,4 @@
 firstName,lastName,address,carType,rentalUse
-1,Chad,Green,YourMomsHouse,Truck,CurrentCarinShop,2days
-2,Shane,Smith,SRU,Car,CarTotalled,1week
-3,John,Friend,StudentCenter,SUV,NeedCar,1month
-4,Kunj,C,Field House,SUV,Im Bored, 3 days
+Chad,Green,YourMomsHouse,Truck,CurrentCarinShop,2days
+Shane,Smith,SRU,Car,CarTotalled,1week
+John,Friend,StudentCenter,SUV,NeedCar,1month

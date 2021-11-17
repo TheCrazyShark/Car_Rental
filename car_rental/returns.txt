@@ -1,4 +1,4 @@
-damage(y/n),damages,dateReturned,milesDriven
+
 yes,BrokenWindshield,11/11,1000
 yes,damages,returnDate,milesDriven
 yes,brokenwindshield,11/11,1000

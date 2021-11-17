@@ -8,7 +8,7 @@
 	Error statement if car type not available.
 ******************/
 void request_car() {
-	string request_id, firstName, lastName, address, carType, rentalUse, rentalTime;
+	string firstName, lastName, address, carType, rentalUse, rentalTime;
 
 	cout << "Enter first name: ";
 	getline(cin, firstName);
@@ -24,24 +24,9 @@ void request_car() {
 	getline(cin, rentalTime);
 	//need to figure out how to store the request
 
-	ifstream requestsIn("requests.txt");
-	if (requestsIn.is_open()) { // If the file is open
-		// Ignore first line for column names
-		string line;
-		getline(requestsIn, line);
-
-		while (!requestsIn.eof()) { // While the end of file is NOT reached
-			string line;
-			getline(requestsIn, request_id, ',');
-			getline(requestsIn, line, '\n'); // IGNORE THIS INPUT - Only needed to get to end of line
-		}
-		requestsIn.close(); //closing the file
-	}
-	else cout << "Unable to open file"; // Error if file can't open
-
 	ofstream requestsOut("requests.txt", fstream::app);
 	if (requestsOut.is_open()) { // If the file is open
-		requestsOut << "\n" << stoi(request_id) + 1 << "," << firstName << "," << lastName << "," << address << "," << carType << "," << rentalUse
+		requestsOut << "\n" << firstName << ", " << lastName << ", " << address << ", " << carType << ", " << rentalUse
 			<< ", " << rentalTime; // Add whole line
 		requestsOut.close(); //closing the file
 	}
@@ -67,13 +52,13 @@ void return_car() {
 		damages = "none";
 	}
 	cout << "When did you return the car: ";
-	getline(cin, dateReturned);
+	getline(cin, dateReturned);;
 	cout << "How many miles have you driven:  ";
-	getline(cin, milesDriven);
+	getline(cin, milesDriven);;
 
 	ofstream returnsOut("returns.txt", fstream::app);
 	if (returnsOut.is_open()) { // If the file is open
-		returnsOut << "\n" << damage << "," << damages << "," << dateReturned << "," << milesDriven; // Add whole line
+		returnsOut << "\n" << damage << ", " << damages << ", " << dateReturned << ", " << milesDriven; // Add whole line
 		returnsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
@@ -86,15 +71,14 @@ void return_car() {
 ******************/
 void repair_car() {
 	string carType, carPlate, carColor, damages;
-
 	cout << "What were the damages or problems: " << "\n";
-	getline(cin, damages;
+	cin >> damages;
 	cout << "What is the car's plate number: " << "\n";
-	getline(cin, carPlate;
+	cin >> carPlate;
 	cout << "What tpye of car is it: " << "\n";
-	getline(cin, carType;
+	cin >> carType;
 	cout << "What is the car's color:  " << "\n";
-	getline(cin, carColor;
+	cin >> carColor;
 }
 
 /******************
