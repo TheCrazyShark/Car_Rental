@@ -95,6 +95,13 @@ void repair_car() {
 	cin >> carType;
 	cout << "What is the car's color:  " << "\n";
 	cin >> carColor;
+	
+	ofstream repairsOut("repairs.txt", fstream::app);
+	if (repairsOut.is_open()) { // If the file is open
+		repairsOut << "\n" << damages << "," << carPlate << "," << carType << "," << carType << "," << carColor; // Add whole line
+		repairsOut.close(); //closing the file
+	}
+	else cout << "Unable to open file"; // Error if file can't open
 }
 
 /******************
