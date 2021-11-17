@@ -1,11 +1,43 @@
 #include "global.h"
 
+string convertToASCII(string password) {
+	string result = "";
+	int_fast64_t convert;
+	for (int i = 0; i < password.length(); i++)
+	{
+		convert = int(password[i]);
+		convert = convert % 7;
+		string  inter = to_string(convert);
+		result = result + inter;
+	}
+	return result;
+}
+
+/************** 
+	HASHING - Can't do more than 9 characters
+/**************/
+string hash_password(string password) {
+	uint_fast64_t toss = 1;
+	int64_t  passkey_to_asci;
+	int64_t salt = 97;
+	int64_t mod = 7;
+	int64_t hash_num;
+
+	while (toss) {
+		passkey_to_asci = stoi(convertToASCII(password));
+		hash_num = passkey_to_asci % 7;
+		hash_num = hash_num + int32_t(salt);
+		toss = toss - 1;
+	}
+	//cout << hash_num;
+	return to_string(hash_num);
+}
+
 /*----------------
 	!!!!NEED TO ADD MAX 3 TIMES LOGIN!!!!!
 ----------------*/
 void login(User& user) {
 	string username, clear_pass, hash_pass, user_id, user_type, text;
-	string Hash_function(string);
 	vector<string>usernames;
 	vector<string>passwords;
 	vector<string>user_ids;
@@ -51,11 +83,10 @@ void login(User& user) {
 	}
 
 	//Hashing the password that was just entered.
-	//hash_pass = Hash_function(clear_pass);
-	//cout << hash_pass << endl; //Debugging
+	hash_pass = hash_password(clear_pass);
 
 	// Test if hashed password is the equal to the password retreived from file
-	if (clear_pass == passwords[userIndex]) {
+	if (hash_pass == passwords[userIndex]) {
 		cout << "Login successful" << endl;
 	}
 	else {
@@ -76,7 +107,7 @@ void login(User& user) {
 }
 
 void create_account(User& user) {
-	string username, password_first, password_second, user_id, inputPassword, inputUsername;
+	string username, password_first, password_second, user_id, inputPassword, inputUsername, hash_pass;
 
 	// User input for username/password
 	cout << "Create your username: " << endl;
@@ -107,34 +138,20 @@ void create_account(User& user) {
 	}
 	else cout << "Unable to open file"; // Error if file can't open
 
-	/********************************************
-	HASH PASSWORD BEFORE WRITING PASSWORD TO FILE
-	********************************************/
-
 	// Set up user object
 	user.setUserId(to_string(stoi(user_id) + 1));
 	user.setUsername(username);
 	user.setUserType("customer");
 
+	// Hash password
+	hash_pass = hash_password(password_first);
+
 	// Adds new user to users.txt
 	ofstream usersOut("users.txt", fstream::app);
 	if (usersOut.is_open()) { // If the file is open
-		usersOut << "\n" << stoi(user_id) + 1 << ", " << username << ", " << password_first << ", " << "customer"; // Add whole line
+		usersOut << "\n" << stoi(user_id) + 1 << "," << username << "," << hash_pass << "," << "customer"; // Add whole line
 		usersOut.close(); //closing the file
 	}
 	else 
 		cout << "Unable to open file"; // Error if file can't open
 }
-
-/********************
-	Called by create_account() and login() to get a hash of passwords for testing.
-********************/
-/*string hash_function(string password) {
-	string password_1, hash;
-	password_1 = password;
-	//Will Add GenerateHash and GenerateSALT by the next phase.
-	hash = bcrypt::GenerateHash(password_1);
-	//cout << "Hash: " << Hash << endl; // DEBUGGING
-
-	return hash;
-}*/
