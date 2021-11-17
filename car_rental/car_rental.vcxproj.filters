@@ -21,6 +21,9 @@
     <ClCompile Include="menus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="login.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h">
@@ -36,5 +39,6 @@
     <Text Include="log.txt" />
     <Text Include="requests.txt" />
     <Text Include="..\returns.txt" />
+    <Text Include="returns.txt" />
   </ItemGroup>
 </Project>
