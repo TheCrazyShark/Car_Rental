@@ -8,7 +8,7 @@
 	Error statement if car type not available.
 ******************/
 void request_car() {
-	string firstName, lastName, address, carType, rentalUse, rentalTime;
+	string request_id, firstName, lastName, address, carType, rentalUse, rentalTime;
 
 	cout << "Enter first name: ";
 	getline(cin, firstName);
@@ -24,9 +24,24 @@ void request_car() {
 	getline(cin, rentalTime);
 	//need to figure out how to store the request
 
+	ifstream requestsIn("users.txt");
+	if (requestsIn.is_open()) { // If the file is open
+		// Ignore first line for column names
+		string line;
+		getline(requestsIn, line);
+
+		while (!requestsIn.eof()) { // While the end of file is NOT reached
+			string line;
+			getline(requestsIn, request_id, ',');
+			getline(requestsIn, line, '\n'); // IGNORE THIS INPUT - Only needed to get to end of line
+		}
+		requestsIn.close(); //closing the file
+	}
+	else cout << "Unable to open file"; // Error if file can't open
+
 	ofstream requestsOut("requests.txt", fstream::app);
 	if (requestsOut.is_open()) { // If the file is open
-		requestsOut << "\n" << firstName << "," << lastName << "," << address << "," << carType << "," << rentalUse
+		requestsOut << "\n" << stoi(request_id) + 1 << "," << firstName << "," << lastName << "," << address << "," << carType << "," << rentalUse
 			<< ", " << rentalTime; // Add whole line
 		requestsOut.close(); //closing the file
 	}
@@ -52,9 +67,9 @@ void return_car() {
 		damages = "none";
 	}
 	cout << "When did you return the car: ";
-	getline(cin, dateReturned);;
+	getline(cin, dateReturned);
 	cout << "How many miles have you driven:  ";
-	getline(cin, milesDriven);;
+	getline(cin, milesDriven);
 
 	ofstream returnsOut("returns.txt", fstream::app);
 	if (returnsOut.is_open()) { // If the file is open
@@ -121,8 +136,8 @@ void log(string user_id, string action_type) {
 }
 
 int main() {
-	main_menu();
-	//request_car();
+	//main_menu();
+	request_car();
 	//return_car();
 	//view_requests();
 
