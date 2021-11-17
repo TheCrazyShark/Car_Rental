@@ -63,18 +63,27 @@ void customer_menu(User& user) {
 	cout << "Welcome. Please select what you would like to do!" << endl;
 	cout << "1 - Request Car" << endl;
 	cout << "2 - Return Car" << endl;
+	cout << "3 - Exit" << endl;
 
 	do {
 		cin >> user_input;
+		cin.ignore();
 		if (user_input == "1") { // Request Car
 			request_car();
 		}
 		else if (user_input == "2") { // Return Car
 			return_car();
 		}
+		else if (user_input == "3") {
+			exit(0);
+		}
 		else {
 			cout << "Invalid input, please try again." << endl;
 		}
+		cout << "Please select what you would like to do next or exit!" << endl;
+		cout << "1 - Request Car" << endl;
+		cout << "2 - Return Car" << endl;
+		cout << "3 - Exit" << endl;
 	} while (user_input != "1" || user_input != "2");
 }
 

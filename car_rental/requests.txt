@@ -3,3 +3,6 @@ firstName,lastName,address,carType,rentalUse
 2,Shane,Smith,SRU,Car,CarTotalled,1week
 3,John,Friend,StudentCenter,SUV,NeedCar,1month
 4,Kunj,C,Field House,SUV,Im Bored,3 days
+5,John,Cena,Florida,Truck,Im rich,3 days
+6,Fred,Rodgers,Grove City,Truck,Car Broken,1 week
+7,Devin,Heinl,Dorms,Car,Get around campus,1 month
