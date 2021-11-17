@@ -26,7 +26,7 @@ void request_car() {
 
 	ofstream requestsOut("requests.txt", fstream::app);
 	if (requestsOut.is_open()) { // If the file is open
-		requestsOut << "\n" << firstName << ", " << lastName << ", " << address << ", " << carType << ", " << rentalUse
+		requestsOut << "\n" << firstName << "," << lastName << "," << address << "," << carType << "," << rentalUse
 			<< ", " << rentalTime; // Add whole line
 		requestsOut.close(); //closing the file
 	}
