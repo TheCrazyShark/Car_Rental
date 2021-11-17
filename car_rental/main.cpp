@@ -144,10 +144,11 @@ void log(string user_id, string action_type) {
 }
 
 int main() {
-	main_menu();
+	//main_menu();
 	//request_car();
 	//return_car();
 	//view_requests();
+	repair_car();
 
 	return 0;
 }

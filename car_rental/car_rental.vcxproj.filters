@@ -38,7 +38,6 @@
     <Text Include="cars.txt" />
     <Text Include="log.txt" />
     <Text Include="requests.txt" />
-    <Text Include="..\returns.txt" />
     <Text Include="returns.txt" />
   </ItemGroup>
 </Project>
