@@ -86,14 +86,15 @@ void return_car() {
 ******************/
 void repair_car() {
 	string carType, carPlate, carColor, damages;
+
 	cout << "What were the damages or problems: " << "\n";
-	cin >> damages;
+	getline(cin, damages;
 	cout << "What is the car's plate number: " << "\n";
-	cin >> carPlate;
+	getline(cin, carPlate;
 	cout << "What tpye of car is it: " << "\n";
-	cin >> carType;
+	getline(cin, carType;
 	cout << "What is the car's color:  " << "\n";
-	cin >> carColor;
+	getline(cin, carColor;
 }
 
 /******************
