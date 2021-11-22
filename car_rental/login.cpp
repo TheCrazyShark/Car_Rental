@@ -13,9 +13,9 @@ string convertToASCII(string password) {
 	return result;
 }
 
-/************** 
+/************************* 
 	HASHING - Can't do more than 9 characters
-/**************/
+/***********************************/
 string hash_password(string password) {
 	uint_fast64_t toss = 1;
 	int64_t  passkey_to_asci;
@@ -96,13 +96,6 @@ void login(User& user) {
 	user.setUserId(user_id);
 	user.setUsername(username);
 	user.setUserType(user_types[userIndex]);
-
-	/******************************************
-	1. Hash the password that was just entered
-	2. Select the password (Should be hashed) from the database by matching the usernames
-	3. Test the newly hashed password against the pulled password and test if they are the same
-		ERROR: Provide same error message no matter if account isn't found or password doesn't match "Account not found or password is incorrect"
-	******************************************/
 }
 
 void create_account(User& user) {

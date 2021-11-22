@@ -1,12 +1,14 @@
 #include "global.h"
 
-/******************
+/*********************************************** CUSTOMER FUNCTIONS *****************************************************/
+
+/*****************************
 	Request car will be called if the user wants to request a car.
 	The user can request to view the available cars. Which will be printed into the console.
 	It will ask what kind of car they want long with some other info and then pass the info on to the admin.
 	Im thinking pass the user input into a text file that the admin can access then delete.
 	Error statement if car type not available.
-******************/
+****************************/
 void request_car() {
 	string request_id, firstName, lastName, address, carType, rentalUse, rentalTime;
 
@@ -49,12 +51,12 @@ void request_car() {
 	else cout << "Unable to open file"; // Error if file can't open
 }
 
-/******************
+/*****************************
 	Return car will be called when a user wants to return a car.
 	The user will fill out the return form.
 	The form will then be viewable by the admin.
 	Admin will either decide to issue a repair ticket or return the car to the database.
-******************/
+****************************/
 void return_car() {
 	string damage, damages, dateReturned, milesDriven;
 
@@ -80,12 +82,14 @@ void return_car() {
 	else cout << "Unable to open file"; // Error if file can't open
 }
 
-/******************
+/*********************************************** ADMIN FUNCTIONS *****************************************************/
+
+/*****************************
 	After the car is returned this fuction is called if the car needs repaired.
 	The admin will fill out a form of the cars information and will attach the damages or
 	suspected problems that the customer decribed.
-******************/
-void repair_car() {
+****************************/
+void issue_repair() {
 	string carType, carPlate, carColor, damages;
 	cout << "What were the damages or problems: " << "\n";
 	cin >> damages;
@@ -104,10 +108,10 @@ void repair_car() {
 	else cout << "Unable to open file"; // Error if file can't open
 }
 
-/******************
+/*****************************
 	Called by view_requests after an admin selects a specific request
 	and allows the admin to accept or deny the request
-******************/
+****************************/
 bool issue_or_deny() {
 	bool decision;
 	decision = false;
@@ -115,10 +119,10 @@ bool issue_or_deny() {
 	return decision;
 }
 
-/*****************
+/****************************
 	Outputs all requests and lets an admin select 
 	and view the specific information of a request.
-*****************/
+***************************/
 void view_requests() {
 	ifstream requestsIn("requests.txt");
 	if (requestsIn.is_open()) { // If the file is open
@@ -134,21 +138,17 @@ void view_requests() {
 	else cout << "Unable to open file"; // Error if file can't open
 }
 
-/******************
-	Log is called after every "action" that is made. The function recieves
-	the user_id that made the action as well as what the action was. It will then
-	push to a file that holds that information as well as the date/time that it occured
-******************/
-void log(string user_id, string action_type) {
-	string date, time; // GET CURRENT DATE
+/*********************************************** ADMIN FUNCTIONS *****************************************************/
+void view_repairs() {
+
 }
 
 int main() {
-	//main_menu();
+	main_menu();
 	//request_car();
 	//return_car();
 	//view_requests();
-	repair_car();
+	//issue_repair();
 
 	return 0;
 }

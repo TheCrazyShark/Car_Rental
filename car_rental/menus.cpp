@@ -30,9 +30,9 @@ string User::getUserType() {
 	return user_type;
 }
 
-/******************
+/*****************************
 	Lists available options for the admin
-******************/
+****************************/
 void admin_menu(User& user) {
 	string user_input;
 
@@ -58,9 +58,9 @@ void admin_menu(User& user) {
 	} while (user_input != "1" || user_input != "2");
 }
 
-/******************
+/*****************************
 	Lists available options for the customer
-******************/
+****************************/
 void customer_menu(User& user) {
 	string user_input;
 
@@ -91,9 +91,9 @@ void customer_menu(User& user) {
 	} while (user_input != "1" || user_input != "2");
 }
 
-/******************
+/*****************************
 	Lists available options for the mechanic
-******************/
+****************************/
 void mech_menu(User& user) {
 	string user_input;
 

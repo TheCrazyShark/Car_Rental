@@ -140,18 +140,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="login.cpp" />
+    <ClCompile Include="logs.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menus.cpp">
       <DeploymentContent>false</DeploymentContent>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bcrypt.h" />
     <ClInclude Include="global.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="cars.txt" />
     <Text Include="log.txt" />
+    <Text Include="repairs.txt" />
     <Text Include="requests.txt" />
     <Text Include="returns.txt" />
     <Text Include="users.txt" />

@@ -6,6 +6,10 @@
 using namespace std;
 #pragma once
 
+
+/*-----------------
+	Class to store user information to be used in logs and permissions
+-----------------*/
 class User {
 private:
 	string username, pass_hash, user_id, user_type;
@@ -23,21 +27,28 @@ public:
 	string getUserType();
 };
 
-/*-----------------
-	Class to store user information to be used in logs and permissions
------------------*/
-
-
-void login(User& user);
-void create_account(User& user);
-//string hash_function(string password);
+/**************** menus.cpp ****************/
 void main_menu();
-void request_car();
-void return_car();
-void repair_car();
-bool issue_or_deny();
-void view_requests();
-void log(string user_id, string action_type);
 void admin_menu(User& user);
 void customer_menu(User& user);
 void mech_menu(User& user);
+
+/**************** login.cpp ****************/
+void login(User& user);
+void create_account(User& user);
+string hash_password(string password);
+
+/**************** main.cpp ****************/
+// Customer Functions
+void request_car();
+void return_car();
+
+// Admin Functions
+void issue_repair();
+bool issue_or_deny();
+void view_requests();
+
+// Mech Functions
+
+/**************** logs.cpp ****************/
+void log(string user_id, string action_type);
