@@ -44,54 +44,54 @@ void login(User& user) {
 	vector<string>user_types;
 	int loginCount = 0;
 
-	cout << "Please enter your username:" << endl;
-	cin >> username;
-	cout << "Please enter your password:" << endl;
-	cin >> clear_pass;
+		cout << "Please enter your username:" << endl;
+		cin >> username;
+		cout << "Please enter your password:" << endl;
+		cin >> clear_pass;
 
-	ifstream users("users.txt"); // Opening the file.
-	if (users.is_open()) { // If the file is open
-		// Ignore first line for column names
-		string line;
-		getline(users, line);
+		ifstream users("users.txt"); // Opening the file.
+		if (users.is_open()) { // If the file is open
+			// Ignore first line for column names
+			string line;
+			getline(users, line);
 
-		while (!users.eof()) { // While the end of file is NOT reached
-			getline(users, text, ',');
-			user_ids.push_back(text);
-			getline(users, text, ',');
-			usernames.push_back(text);
-			getline(users, text, ',');
-			passwords.push_back(text);
-			getline(users, text, '\n'); // New line after password
-			user_types.push_back(text);
+			while (!users.eof()) { // While the end of file is NOT reached
+				getline(users, text, ',');
+				user_ids.push_back(text);
+				getline(users, text, ',');
+				usernames.push_back(text);
+				getline(users, text, ',');
+				passwords.push_back(text);
+				getline(users, text, '\n'); // New line after password
+				user_types.push_back(text);
+			}
+			users.close(); //closing the file
 		}
-		users.close(); //closing the file
-	}
-	else cout << "ERROR: Unable to open file"; // Error if file can't open
+		else cout << "ERROR: Unable to open file"; // Error if file can't open
 
-	// Check if username entered matches with any username and if so returns their user_id
-	vector<string>::iterator it;
-	it = find(usernames.begin(), usernames.end(), username);
-	int userIndex;
+		// Check if username entered matches with any username and if so returns their user_id
+		vector<string>::iterator it;
+		it = find(usernames.begin(), usernames.end(), username);
+		int userIndex;
 
-	if (it != usernames.end()) { // If it doesn't make to end then username is in vector
-		userIndex = it - usernames.begin();// finds user_id
-	}
-	else {
-		cout << "ERROR: Username not found." << endl;
-	}
+		if (it != usernames.end()) { // If it doesn't make to end then username is in vector
+			userIndex = it - usernames.begin();	// finds user_id
+		}
+		else {
+			cout << "ERROR: Username not found." << endl;
+		}
 
-	//Hashing the password that was just entered.
-	hash_pass = hash_password(clear_pass);
+		//Hashing the password that was just entered.
+		hash_pass = hash_password(clear_pass);
 
-	// Test if hashed password is the equal to the password retreived from file
-	if (hash_pass == passwords[userIndex]) {
-		cout << endl << "Login successful" << endl;
-	}
-	else {
-		cout << "ERROR: Password did not match." << endl;
-	}
-	
+		// Test if hashed password is the equal to the password retreived from file
+		if (hash_pass == passwords[userIndex]) {
+			cout << endl << "Login successful" << endl;
+		}
+		else {
+			cout << "ERROR: Password did not match." << endl;
+		}
+
 	// Set up user object
 	user.setUserId(user_id);
 	user.setUsername(username);

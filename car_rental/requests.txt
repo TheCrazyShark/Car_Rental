@@ -7,3 +7,4 @@ firstName,lastName,address,carType,rentalUse
 6,Fred,Rodgers,Grove City,Truck,Car Broken,1 week
 7,Devin,Heinl,Dorms,Car,Get around campus,1 month
 8,Shane,Smith,123 Fake Lane,Car,To get somewhere,1 day
+9,chad,green,sru,type,cause,2 days

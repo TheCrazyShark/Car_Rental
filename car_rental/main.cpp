@@ -1,5 +1,16 @@
 #include "global.h"
 
+/******************
+THINGS TO ADD:
+Exit program if login fails 3 times
+Inididual log functions
+Make hashing better
+Add ability to view/edit user information as Admin user
+Make it so Mech can view the repair requests --> Mark specific requests as complete
+Make it so Admin can accept or deny a current request
+Make it so Customer can view their current requests
+*******************/
+
 /*********************************************** CUSTOMER FUNCTIONS *****************************************************/
 
 /*****************************
