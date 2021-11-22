@@ -51,4 +51,4 @@ void view_requests();
 // Mech Functions
 
 /**************** logs.cpp ****************/
-void log(string user_id, string action_type);
+void log(User& user, string action_type);
