@@ -217,6 +217,13 @@ void view_repairs() {
 }
 
 int main() {
+	/*
+	// Manually decryped files
+	encdec enc;
+
+	enc.decrypt("filename (without .txt)");
+	*/
+
 	main_menu();
 	//request_car();
 	//return_car();
