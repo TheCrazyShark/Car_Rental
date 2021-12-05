@@ -37,8 +37,8 @@ void admin_menu(User& user) {
 	string user_input;
 
 	cout << "Welcome. Please select what you would like to do!" << endl;
-	cout << "1 - View Requests" << endl;
-	cout << "2 - View Car Return Submission" << endl;
+	cout << "1 - View Car Requests" << endl;
+	cout << "2 - View Car Returns" << endl;
 	cout << "3 - Exit" << endl;
 
 	do {
@@ -47,7 +47,7 @@ void admin_menu(User& user) {
 			view_requests();
 		}
 		else if (user_input == "2") { // View Car Return Submission
-			// List car return subimssions
+			view_returns();
 		}
 		else if (user_input == "3") { // Exits from program
 			exit(0);

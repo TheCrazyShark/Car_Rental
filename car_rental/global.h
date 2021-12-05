@@ -6,7 +6,6 @@
 using namespace std;
 #pragma once
 
-
 /*-----------------
 	Class to store user information to be used in logs and permissions
 -----------------*/
@@ -25,6 +24,72 @@ public:
 	string getUsername();
 	string getUserId();
 	string getUserType();
+};
+
+/*----------------------
+	Class to encrypt and decrypt files using simple cesear cipher
+----------------------*/
+class encdec {
+private:
+	int key = 20; // Key to encrypt/decrypt
+	string file; // File name to be encrypt
+	string fileEncrypt;
+	char c;
+public:
+	void encrypt(string filename) {
+		file = filename + ".txt";
+		fileEncrypt = filename + "Encrypt.txt";
+		fstream fin, fout;
+
+		fin.open(file, fstream::in);
+		fout.open(fileEncrypt, fstream::out);
+
+		if (fin.is_open() && fout.is_open()) {
+			// Read file till end
+			while (fin >> noskipws >> c) {
+				int temp = (c + key); // Make encrypted char
+
+				fout << (char)temp; // Write temp as char in output
+			}
+
+			// Close files
+			fin.close();
+			fout.close();
+
+			// Delete cleartext file
+			if (remove(file.c_str()) != 0)
+				perror("Error deleting file");
+		}
+		else {
+			cout << "Error opening file while encrypting" << endl;
+			exit;
+		}
+	}
+	void decrypt(string filename) {
+		file = filename + ".txt";
+		fileEncrypt = filename + "Encrypt.txt";
+		fstream fin, fout;
+
+		fin.open(fileEncrypt, fstream::in);
+		fout.open(file, fstream::out);
+
+		if (fin.is_open() && fout.is_open()) {
+			// Read file till end
+			while (fin >> noskipws >> c) {
+				int temp = (c - key); // Make decrypted char
+
+				fout << (char)temp; // Write temp as char in output
+			}
+
+			// Close files
+			fin.close();
+			fout.close();
+		}
+		else {
+			cout << "Error opening file while decrypting" << endl;
+			exit;
+		}
+	}
 };
 
 /**************** menus.cpp ****************/
@@ -47,6 +112,7 @@ void return_car();
 void issue_repair();
 bool issue_or_deny();
 void view_requests();
+void view_returns();
 
 // Mech Functions
 

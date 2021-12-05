@@ -1,4 +1,0 @@
-user_id,username,password,userType
-1,testuser,100,customer
-2,testadmin,98,customer
-3,testmech,99,customer

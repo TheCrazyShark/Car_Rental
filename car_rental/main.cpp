@@ -7,8 +7,9 @@ Inididual log functions
 Make hashing better
 Add ability to view/edit user information as Admin user
 Make it so Mech can view the repair requests --> Mark specific requests as complete
-Make it so Admin can accept or deny a current request
+Make it so Admin can accept or deny a current request after viewing requets
 Make it so Customer can view their current requests
+issue_repair needs the fix that is in the comments of the file
 *******************/
 
 /*********************************************** CUSTOMER FUNCTIONS *****************************************************/
@@ -22,12 +23,13 @@ Make it so Customer can view their current requests
 ****************************/
 void request_car() {
 	string request_id, firstName, lastName, address, carType, rentalUse, rentalTime;
+	encdec enc;
 
 	cout << "Enter first name: ";
 	getline(cin, firstName);
 	cout << "Enter last name: ";
 	getline(cin, lastName);
-	cout << "Enter you address: ";
+	cout << "Enter your address: ";
 	getline(cin, address);
 	cout << "Enter preferred rental type(Car, Truck, Suv, Van): ";
 	getline(cin, carType);
@@ -37,6 +39,7 @@ void request_car() {
 	getline(cin, rentalTime);
 	//need to figure out how to store the request
 
+	enc.decrypt("requests"); // Decrypt File before opening
 	ifstream requestsIn("requests.txt");
 	if (requestsIn.is_open()) { // If the file is open
 		// Ignore first line for column names
@@ -52,7 +55,6 @@ void request_car() {
 	}
 	else cout << "Unable to open file"; // Error if file can't open
 
-
 	ofstream requestsOut("requests.txt", fstream::app);
 	if (requestsOut.is_open()) { // If the file is open
 		requestsOut << "\n" << stoi(request_id) + 1 << "," << firstName << "," << lastName << "," << address << "," << carType << "," << rentalUse
@@ -60,6 +62,7 @@ void request_car() {
 		requestsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
+	enc.encrypt("returns"); // Re-encrypt File before opening
 }
 
 /*****************************
@@ -70,6 +73,7 @@ void request_car() {
 ****************************/
 void return_car() {
 	string damage, damages, dateReturned, milesDriven;
+	encdec enc;
 
 	cout << "Are there any damages (yes/no): ";
 	getline(cin,damage);
@@ -85,12 +89,14 @@ void return_car() {
 	cout << "How many miles have you driven:  ";
 	getline(cin, milesDriven);
 
+	enc.decrypt("returns"); // Decrypt File before opening
 	ofstream returnsOut("returns.txt", fstream::app);
 	if (returnsOut.is_open()) { // If the file is open
-		returnsOut << "\n" << damage << ", " << damages << ", " << dateReturned << ", " << milesDriven; // Add whole line
+		returnsOut << "\n" << damage << "," << damages << "," << dateReturned << "," << milesDriven; // Add whole line
 		returnsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
+	enc.encrypt("returns"); // Re-encrypt File before opening
 }
 
 /*********************************************** ADMIN FUNCTIONS *****************************************************/
@@ -102,6 +108,8 @@ void return_car() {
 ****************************/
 void issue_repair() {
 	string carType, carPlate, carColor, damages;
+	encdec enc;
+
 	cout << "What were the damages or problems: " << "\n";
 	cin >> damages;
 	cout << "What is the car's plate number: " << "\n";
@@ -111,12 +119,18 @@ void issue_repair() {
 	cout << "What is the car's color:  " << "\n";
 	cin >> carColor;
 	
+	/*****************************************************
+		DON'T GET INFORMATION ABOUT CAR, ASK FOR PLATE, THEN SEARCH CARS FILE FOR CAR & GET INFORMATION, THEN SEARCH RETURNS THEN WRITE TO REPAIRS FILE
+	******************************************************/ 
+
+	enc.decrypt("repairs"); // Decrypt File before opening
 	ofstream repairsOut("repairs.txt", fstream::app);
 	if (repairsOut.is_open()) { // If the file is open
 		repairsOut << "\n" << damages << "," << carPlate << "," << carType << "," << carType << "," << carColor; // Add whole line
 		repairsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
+	enc.encrypt("repairs"); // Re-encrypt File before opening
 }
 
 /*****************************
@@ -135,23 +149,71 @@ bool issue_or_deny() {
 	and view the specific information of a request.
 ***************************/
 void view_requests() {
+	encdec enc;
+
+	enc.decrypt("requests"); // Decrypt File before opening
 	ifstream requestsIn("requests.txt");
 	if (requestsIn.is_open()) { // If the file is open
 		string line;
 		cout << endl;
 
-		//will show column names for reference
+		/*------------------------
+			will show column names for reference
+		------------------------*/
 		while (getline(requestsIn, line)) { // While the end of file is NOT reached
 			cout << line << endl;
 		}
 		requestsIn.close(); //closing the file
 	}
-	else cout << "Unable to open file"; // Error if file can't open
+	else cout << "Unable to open file" << endl; // Error if file can't open
+	enc.encrypt("requests"); // Re-encrypt File before opening
+}
+
+/****************************
+	Outputs all returns and lets an admin select
+	and view the specific information of a return.
+***************************/
+void view_returns() {
+	encdec enc;
+
+	enc.decrypt("returns"); // Decrypt File before opening
+	ifstream requestsIn("returns.txt");
+	if (requestsIn.is_open()) { // If the file is open
+		string line;
+		cout << endl;
+
+		/*------------------------
+			will show column names for reference
+		------------------------*/
+		while (getline(requestsIn, line)) { // While the end of file is NOT reached
+			cout << line << endl;
+		}
+		requestsIn.close(); //closing the file
+	}
+	else cout << "Unable to open file" << endl; // Error if file can't open
+	enc.encrypt("returns"); // Re-encrypt File before opening
 }
 
 /*********************************************** MECH FUNCTIONS *****************************************************/
 void view_repairs() {
+	encdec enc;
 
+	enc.decrypt("repairs"); // Decrypt File before opening
+	ifstream reapirsIn("repairs.txt");
+	if (reapirsIn.is_open()) { // If the file is open
+		string line;
+		cout << endl;
+
+		/*------------------------
+			will show column names for reference
+		------------------------*/
+		while (getline(reapirsIn, line)) { // While the end of file is NOT reached
+			cout << line << endl;
+		}
+		reapirsIn.close(); //closing the file
+	}
+	else cout << "Unable to open file" << endl; // Error if file can't open
+	enc.encrypt("repairs"); // Re-encrypt File before opening
 }
 
 int main() {

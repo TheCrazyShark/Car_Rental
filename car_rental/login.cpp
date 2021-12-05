@@ -42,6 +42,7 @@ void login(User& user) {
 	vector<string>passwords;
 	vector<string>user_ids;
 	vector<string>user_types;
+	encdec enc;
 	int loginCount = 0;
 
 		cout << "Please enter your username:" << endl;
@@ -49,6 +50,7 @@ void login(User& user) {
 		cout << "Please enter your password:" << endl;
 		cin >> clear_pass;
 
+		enc.decrypt("users"); // Decrypt File before opening
 		ifstream users("users.txt"); // Opening the file.
 		if (users.is_open()) { // If the file is open
 			// Ignore first line for column names
@@ -67,7 +69,9 @@ void login(User& user) {
 			}
 			users.close(); //closing the file
 		}
-		else cout << "ERROR: Unable to open file"; // Error if file can't open
+		else
+			cout << "ERROR: Unable to open file"; // Error if file can't open
+		enc.encrypt("users"); // Re-encrypt File before opening
 
 		// Check if username entered matches with any username and if so returns their user_id
 		vector<string>::iterator it;
@@ -100,6 +104,7 @@ void login(User& user) {
 
 void create_account(User& user) {
 	string username, password_first, password_second, user_id, inputPassword, inputUsername, hash_pass;
+	encdec enc;
 
 	// User input for username/password
 	cout << "Create your username: " << endl;
@@ -115,6 +120,7 @@ void create_account(User& user) {
 	} while (password_first != password_second);
 
 	// Counts the number of users in order to calculate the next available user_id
+	enc.decrypt("users"); // Decrypt File before opening
 	ifstream usersIn("users.txt");
 	if (usersIn.is_open()) { // If the file is open
 		// Ignore first line for column names
@@ -146,4 +152,5 @@ void create_account(User& user) {
 	}
 	else 
 		cout << "Unable to open file"; // Error if file can't open
+	enc.encrypt("users"); // Re-encrypt File before opening
 }
