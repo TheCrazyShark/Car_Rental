@@ -46,14 +46,17 @@ void admin_menu(User& user) {
 		cin >> user_input;
 		if (user_input == "1") { // View Requests
 			view_requests();
+			log(user, "Viewed Requests"); // Log which admin viewed requests
 			cout << endl;
 		}
 		else if (user_input == "2") { // View Car Return Submission
 			view_returns();
+			log(user, "Viewed Returns"); // Log which admin viewed returns
 			cout << endl;
 		}
 		else if (user_input == "3") { // View Logs
 			view_logs();
+			log(user, "Viewed Logs"); // Log which admin viewed logs
 			cout << endl;
 		}
 		else if (user_input == "4") { // Exits from program
@@ -81,10 +84,12 @@ void customer_menu(User& user) {
 		cin.ignore();
 		if (user_input == "1") { // Request Car
 			request_car();
+			log(user, "Requested Car"); // Log which user requested car
 			cout << endl;
 		}
 		else if (user_input == "2") { // Return Car
 			return_car();
+			log(user, "Returned Car"); // Log which user returned car
 			cout << endl;
 		}
 		else if (user_input == "3") { // Exits from program
@@ -110,6 +115,8 @@ void mech_menu(User& user) {
 		cin >> user_input;
 		if (user_input == "1") { // View Repair Reports
 			// List repair reports
+			log(user, "Viewed Repair Reports"); // Log which mech viewed repair reports
+			cout << endl;
 		}
 		else if (user_input == "2") { // Exits from program
 			exit(0);
