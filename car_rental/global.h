@@ -99,7 +99,7 @@ void customer_menu(User& user);
 void mech_menu(User& user);
 
 /**************** login.cpp ****************/
-void login(User& user);
+bool login(User& user);
 void create_account(User& user);
 string hash_password(string password);
 
@@ -117,4 +117,6 @@ void view_returns();
 // Mech Functions
 
 /**************** logs.cpp ****************/
-//void log(User& user, string action_type);
+string getCurrDateTime();
+void log(User& user, string action_type);
+void view_logs();

@@ -1,2 +1,0 @@
-user_id,action_type,date,time
-1, Car_Request, 11/22/21, 18:23

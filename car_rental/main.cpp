@@ -217,18 +217,13 @@ void view_repairs() {
 }
 
 int main() {
-	/*
-	// Manually decryped files
-	encdec enc;
+	// Manually decrypt files
+	/*encdec enc;
 
-	enc.decrypt("filename (without .txt)");
-	*/
-
+	//enc.decrypt("users");
+	enc.encrypt("users");*/
+	
 	main_menu();
-	//request_car();
-	//return_car();
-	//view_requests();
-	//issue_repair();
 
 	return 0;
 }
