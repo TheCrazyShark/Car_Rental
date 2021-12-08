@@ -87,7 +87,6 @@ bool login(User& user) {
 			// Test if hashed password is the equal to the password retreived from file
 			if (hash_pass == passwords[userIndex]) {
 				cout << endl << "Login successful" << endl;
-				break;
 
 				// Set up user object
 				user.setUserId(to_string(userIndex + 1));
@@ -99,8 +98,11 @@ bool login(User& user) {
 				return true; // Show menu that user logged in
 			}
 			else {
+				// Show menu that user did not log in
 				cout << "ERROR: Password did not match." << endl << endl;
 				loginCountpassword++;
+				continue;
+
 				user.setUserId("0");
 				log(user, "Failed Login"); // Log which user failed a login
 				return false; // Show menu that user did not log in

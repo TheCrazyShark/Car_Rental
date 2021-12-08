@@ -132,7 +132,7 @@ void mech_menu(User& user) {
 		else {
 			cout << "Invalid input, please try again." << endl;
 		}
-	} while (user_input != "1");
+	} while (user_input != "1" || user_input != "2");
 }
 
 void main_menu() {

@@ -209,9 +209,8 @@ void view_repairs() {
 int main() {
 	// Manually decrypt files
 	//encdec enc;
-
-	//enc.decrypt("returns");
-	//enc.encrypt("returns");
+	//enc.decrypt("log");
+	//enc.encrypt("log");
 	
 	main_menu();
 
