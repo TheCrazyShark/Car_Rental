@@ -3,7 +3,6 @@
 /******************
 THINGS TO ADD:
 Exit program if login fails 3 times
-Inididual log functions
 Make hashing better
 Add ability to view/edit user information as Admin user
 Make it so Mech can view the repair requests --> Mark specific requests as complete
