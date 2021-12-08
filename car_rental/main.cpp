@@ -1,13 +1,13 @@
 #include "global.h"
 
 /******************
-THINGS TO ADD:
-Exit program if login fails 3 times
+ADDITIONAL TO MAKE REAL PROGRAM:
+Make so Mech can mark specific requests as complete
+Make it so admin can add or remove cars
 Make hashing better
-Add ability to view/edit user information as Admin user
-Make it so Mech can view the repair requests --> Mark specific requests as complete
-Make it so Admin can accept or deny a current request after viewing requets
 Make it so Customer can view their current requests
+Add ability to view/edit user information as Admin user
+Make it so Admin can accept or deny a current request after viewing requets
 issue_repair needs the fix that is in the comments of the file
 *******************/
 
@@ -113,10 +113,6 @@ void issue_repair() {
 	//cin.ignore();
 	cout << "What is the car's plate number: ";
 	getline(cin, carPlate);
-	
-	/*****************************************************
-		DON'T GET INFORMATION ABOUT CAR, ASK FOR PLATE, THEN SEARCH CARS FILE FOR CAR & GET INFORMATION, THEN SEARCH RETURNS THEN WRITE TO REPAIRS FILE
-	******************************************************/ 
 
 	enc.decrypt("repairs"); // Decrypt File before opening
 	ofstream repairsOut("repairs.txt", fstream::app);
@@ -152,9 +148,6 @@ void view_requests() {
 		string line;
 		cout << endl;
 
-		/*------------------------
-			will show column names for reference
-		------------------------*/
 		while (getline(requestsIn, line)) { // While the end of file is NOT reached
 			cout << line << endl;
 		}
@@ -217,8 +210,8 @@ int main() {
 	// Manually decrypt files
 	//encdec enc;
 
-	//enc.decrypt("requests");
-	//enc.encrypt("requests");
+	//enc.decrypt("returns");
+	//enc.encrypt("returns");
 	
 	main_menu();
 

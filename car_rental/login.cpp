@@ -13,9 +13,6 @@ string convertToASCII(string password) {
 	return result;
 }
 
-/************************* 
-	HASHING - Can't do more than 9 characters
-/***********************************/
 string hash_password(string password) {
 	uint_fast64_t toss = 1;
 	int64_t  passkey_to_asci;
@@ -29,13 +26,10 @@ string hash_password(string password) {
 		hash_num = hash_num + int32_t(salt);
 		toss = toss - 1;
 	}
-	//cout << hash_num;
+
 	return to_string(hash_num);
 }
 
-/*----------------
-	!!!!NEED TO ADD MAX 3 TIMES LOGIN!!!!!
-----------------*/
 bool login(User& user) {
 	string username, clear_pass, hash_pass, user_id, user_type, text;
 	vector<string>usernames;
@@ -45,6 +39,11 @@ bool login(User& user) {
 	encdec enc;
 	int userIndex = 0;
 	int loginCount = 0;
+	int loginCountusername = 0;
+	int loginCountpassword = 0;
+
+	for (int i = 0; i < 3; i++)
+	{
 
 		cout << "Please enter your username:" << endl;
 		cin >> username;
@@ -88,6 +87,7 @@ bool login(User& user) {
 			// Test if hashed password is the equal to the password retreived from file
 			if (hash_pass == passwords[userIndex]) {
 				cout << endl << "Login successful" << endl;
+				break;
 
 				// Set up user object
 				user.setUserId(to_string(userIndex + 1));
@@ -100,7 +100,7 @@ bool login(User& user) {
 			}
 			else {
 				cout << "ERROR: Password did not match." << endl << endl;
-
+				loginCountpassword++;
 				user.setUserId("0");
 				log(user, "Failed Login"); // Log which user failed a login
 				return false; // Show menu that user did not log in
@@ -109,11 +109,14 @@ bool login(User& user) {
 		else {
 			// Show menu that user did not log in
 			cout << "ERROR: Username not found." << endl << endl;
-			
+			loginCountusername++;
+			continue;
+
 			user.setUserId("0");
 			log(user, "Failed Login"); // Log which user failed a login
 			return false;
 		}
+	}
 }
 
 void create_account(User& user) {
@@ -164,7 +167,7 @@ void create_account(User& user) {
 		usersOut << "\n" << stoi(user_id) + 1 << "," << username << "," << hash_pass << "," << "customer"; // Add whole line
 		usersOut.close(); //closing the file
 	}
-	else 
+	else
 		cout << "Unable to open file"; // Error if file can't open
 	enc.encrypt("users"); // Re-encrypt File before opening
 }
