@@ -106,17 +106,14 @@ void return_car() {
 	suspected problems that the customer decribed.
 ****************************/
 void issue_repair() {
-	string carType, carPlate, carColor, damages;
+	string carPlate, damages;
 	encdec enc;
 
-	cout << "What were the damages or problems: " << "\n";
-	cin >> damages;
-	cout << "What is the car's plate number: " << "\n";
-	cin >> carPlate;
-	cout << "What tpye of car is it: " << "\n";
-	cin >> carType;
-	cout << "What is the car's color:  " << "\n";
-	cin >> carColor;
+	cout << "What were the damages or problems: ";
+	getline(cin, damages);
+	//cin.ignore();
+	cout << "What is the car's plate number: ";
+	getline(cin, carPlate);
 	
 	/*****************************************************
 		DON'T GET INFORMATION ABOUT CAR, ASK FOR PLATE, THEN SEARCH CARS FILE FOR CAR & GET INFORMATION, THEN SEARCH RETURNS THEN WRITE TO REPAIRS FILE
@@ -125,7 +122,7 @@ void issue_repair() {
 	enc.decrypt("repairs"); // Decrypt File before opening
 	ofstream repairsOut("repairs.txt", fstream::app);
 	if (repairsOut.is_open()) { // If the file is open
-		repairsOut << "\n" << damages << "," << carPlate << "," << carType << "," << carType << "," << carColor; // Add whole line
+		repairsOut << "\n" << damages << "," << carPlate; // Add whole line
 		repairsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
@@ -193,6 +190,8 @@ void view_returns() {
 	enc.encrypt("returns"); // Re-encrypt File before opening
 }
 
+
+
 /*********************************************** MECH FUNCTIONS *****************************************************/
 void view_repairs() {
 	encdec enc;
@@ -217,10 +216,10 @@ void view_repairs() {
 
 int main() {
 	// Manually decrypt files
-	/*encdec enc;
+	//encdec enc;
 
-	//enc.decrypt("users");
-	enc.encrypt("users");*/
+	//enc.decrypt("repairs");
+	//enc.encrypt("repairs");
 	
 	main_menu();
 
