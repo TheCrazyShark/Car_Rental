@@ -105,7 +105,7 @@ string hash_password(string password);
 
 /**************** main.cpp ****************/
 // Customer Functions
-void request_car();
+void request_car(User& user);
 void return_car();
 
 // Admin Functions

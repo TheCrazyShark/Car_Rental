@@ -20,7 +20,7 @@ issue_repair needs the fix that is in the comments of the file
 	Im thinking pass the user input into a text file that the admin can access then delete.
 	Error statement if car type not available.
 ****************************/
-void request_car() {
+void request_car(User& user) {
 	string request_id, firstName, lastName, address, carType, rentalUse, rentalTime;
 	encdec enc;
 
@@ -36,7 +36,6 @@ void request_car() {
 	getline(cin, rentalUse);
 	cout << "How long are you expecting to rent: ";
 	getline(cin, rentalTime);
-	//need to figure out how to store the request
 
 	enc.decrypt("requests"); // Decrypt File before opening
 	ifstream requestsIn("requests.txt");
@@ -56,12 +55,12 @@ void request_car() {
 
 	ofstream requestsOut("requests.txt", fstream::app);
 	if (requestsOut.is_open()) { // If the file is open
-		requestsOut << "\n" << stoi(request_id) + 1 << "," << firstName << "," << lastName << "," << address << "," << carType << "," << rentalUse
+		requestsOut << "\n" << stoi(request_id) + 1 << "," << user.getUserId() << "," << firstName << "," << lastName << "," << address << "," << carType << "," << rentalUse
 			<< "," << rentalTime; // Add whole line
 		requestsOut.close(); //closing the file
 	}
 	else cout << "Unable to open file"; // Error if file can't open
-	enc.encrypt("returns"); // Re-encrypt File before opening
+	enc.encrypt("requests"); // Re-encrypt File before opening
 }
 
 /*****************************
@@ -218,8 +217,8 @@ int main() {
 	// Manually decrypt files
 	//encdec enc;
 
-	//enc.decrypt("repairs");
-	//enc.encrypt("repairs");
+	//enc.decrypt("requests");
+	//enc.encrypt("requests");
 	
 	main_menu();
 

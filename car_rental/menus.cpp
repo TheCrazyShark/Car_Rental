@@ -90,7 +90,7 @@ void customer_menu(User& user) {
 		cin >> user_input;
 		cin.ignore();
 		if (user_input == "1") { // Request Car
-			request_car();
+			request_car(user);
 			log(user, "Requested Car"); // Log which user requested car
 			cout << endl;
 		}
