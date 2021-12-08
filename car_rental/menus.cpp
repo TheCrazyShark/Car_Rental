@@ -41,9 +41,11 @@ void admin_menu(User& user) {
 		cout << "1 - View Car Requests" << endl;
 		cout << "2 - View Car Returns" << endl;
 		cout << "3 - View Logs" << endl;
-		cout << "4 - Exit" << endl;
+		cout << "4 - Create Repair Report" << endl;
+		cout << "5 - Exit" << endl;
 
 		cin >> user_input;
+		cin.ignore();
 		if (user_input == "1") { // View Requests
 			view_requests();
 			log(user, "Viewed Requests"); // Log which admin viewed requests
@@ -60,6 +62,11 @@ void admin_menu(User& user) {
 			cout << endl;
 		}
 		else if (user_input == "4") { // Exits from program
+			issue_repair();
+			log(user, "Created Repair Ticket"); // Log which admin created repair
+			cout << endl;
+		}
+		else if (user_input == "5") { // Exits from program
 			exit(0);
 		}
 		else {
@@ -115,6 +122,7 @@ void mech_menu(User& user) {
 		cin >> user_input;
 		if (user_input == "1") { // View Repair Reports
 			// List repair reports
+			view_repairs();
 			log(user, "Viewed Repair Reports"); // Log which mech viewed repair reports
 			cout << endl;
 		}

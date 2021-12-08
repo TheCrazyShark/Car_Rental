@@ -115,7 +115,7 @@ void view_requests();
 void view_returns();
 
 // Mech Functions
-
+void view_repairs();
 /**************** logs.cpp ****************/
 string getCurrDateTime();
 void log(User& user, string action_type);

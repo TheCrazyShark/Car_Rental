@@ -33,12 +33,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="users.txt" />
-    <Text Include="cars.txt" />
-    <Text Include="log.txt" />
-    <Text Include="requests.txt" />
-    <Text Include="returns.txt" />
-    <Text Include="repairs.txt" />
-  </ItemGroup>
 </Project>
